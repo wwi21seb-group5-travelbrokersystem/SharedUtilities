@@ -1,39 +1,38 @@
 package org.wwi21seb.vs.group5.UDP;
 
-public class UDPMessage {
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-    private Operation operation;
-    private String sender;
-    private Object data;
+import java.util.UUID;
 
-    public UDPMessage(Operation operation, String sender, Object data) {
+public record UDPMessage(@JsonProperty("operation") Operation operation,
+                         @JsonProperty("transaction_id") UUID transactionId, @JsonProperty("sender") String sender,
+                         @JsonProperty("data") Object data) {
+
+    public UDPMessage(Operation operation, UUID transactionId, String sender, Object data) {
         this.operation = operation;
+        this.transactionId = transactionId;
         this.sender = sender;
         this.data = data;
     }
 
-    public Operation getOperation() {
+    @Override
+    public Operation operation() {
         return operation;
     }
 
-    public String getSender() {
+    @Override
+    public UUID transactionId() {
+        return transactionId;
+    }
+
+    @Override
+    public String sender() {
         return sender;
     }
 
-    public Object getData() {
+    @Override
+    public Object data() {
         return data;
-    }
-
-    public void setOperation(Operation operation) {
-        this.operation = operation;
-    }
-
-    public void setSender(String sender) {
-        this.sender = sender;
-    }
-
-    public void setData(Object data) {
-        this.data = data;
     }
 
 }
