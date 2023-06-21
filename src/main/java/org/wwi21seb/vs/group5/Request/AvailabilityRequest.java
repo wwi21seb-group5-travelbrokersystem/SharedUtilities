@@ -11,9 +11,6 @@ public class AvailabilityRequest {
         @JsonProperty("numberOfPersons")
         private int numberOfPersons;
 
-        public AvailabilityRequest() {
-        }
-
         @JsonCreator
         public AvailabilityRequest(
                 @JsonProperty("startDate") String startDate,
