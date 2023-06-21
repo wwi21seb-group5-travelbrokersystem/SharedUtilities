@@ -1,28 +1,40 @@
 package org.wwi21seb.vs.group5.Request;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public record AvailabilityRequest(@JsonProperty("startDate") String startDate, @JsonProperty("endDate") String endDate,
-                                  @JsonProperty("numberOfPersons") int numberOfPersons) {
+public class AvailabilityRequest {
+        @JsonProperty("startDate")
+        private String startDate;
+        @JsonProperty("endDate")
+        private String endDate;
+        @JsonProperty("numberOfPersons")
+        private int numberOfPersons;
 
-    public AvailabilityRequest(String startDate, String endDate, int numberOfPersons) {
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.numberOfPersons = numberOfPersons;
-    }
+        public AvailabilityRequest() {
+        }
 
-    @Override
-    public String startDate() {
-        return startDate;
-    }
+        @JsonCreator
+        public AvailabilityRequest(
+                @JsonProperty("startDate") String startDate,
+                @JsonProperty("endDate") String endDate,
+                @JsonProperty("numberOfPersons") int numberOfPersons
+        ) {
+                this.startDate = startDate;
+                this.endDate = endDate;
+                this.numberOfPersons = numberOfPersons;
+        }
 
-    @Override
-    public String endDate() {
-        return endDate;
-    }
+        public String getStartDate() {
+                return startDate;
+        }
 
-    @Override
-    public int numberOfPersons() {
-        return numberOfPersons;
-    }
+        public String getEndDate() {
+                return endDate;
+        }
+
+        public int getNumberOfPersons() {
+                return numberOfPersons;
+        }
 }
+

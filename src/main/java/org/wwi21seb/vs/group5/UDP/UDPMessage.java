@@ -4,35 +4,41 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.UUID;
 
-public record UDPMessage(@JsonProperty("operation") Operation operation,
-                         @JsonProperty("transaction_id") UUID transactionId, @JsonProperty("sender") String sender,
-                         @JsonProperty("data") Object data) {
+public class UDPMessage {
 
-    public UDPMessage(Operation operation, UUID transactionId, String sender, Object data) {
+    @JsonProperty("operation")
+    private Operation operation;
+    @JsonProperty("transaction_id")
+    private UUID transactionId;
+    @JsonProperty("sender")
+    private String sender;
+    @JsonProperty("data")
+    private String data;
+
+    // i hate jackson
+    public UDPMessage() {
+    }
+
+    public UDPMessage(Operation operation, UUID transactionId, String sender, String data) {
         this.operation = operation;
         this.transactionId = transactionId;
         this.sender = sender;
         this.data = data;
     }
 
-    @Override
-    public Operation operation() {
+    public Operation getOperation() {
         return operation;
     }
 
-    @Override
-    public UUID transactionId() {
+    public UUID getTransactionId() {
         return transactionId;
     }
 
-    @Override
-    public String sender() {
+    public String getSender() {
         return sender;
     }
 
-    @Override
-    public Object data() {
+    public String getData() {
         return data;
     }
-
 }
