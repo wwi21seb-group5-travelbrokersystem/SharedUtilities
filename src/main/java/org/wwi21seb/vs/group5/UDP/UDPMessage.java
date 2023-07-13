@@ -4,6 +4,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.UUID;
 
+/**
+ * The UDPMessage is a class used to standardize the communication between the
+ * different services. It contains the operation (e.g. PREPARE, COMMIT, ...),
+ * the transaction id, the sender and the data needed to perform the operation.
+ */
 public class UDPMessage {
 
     @JsonProperty("operation")
@@ -15,7 +20,6 @@ public class UDPMessage {
     @JsonProperty("data")
     private String data;
 
-    // i hate jackson
     public UDPMessage() {
     }
 
@@ -40,5 +44,15 @@ public class UDPMessage {
 
     public String getData() {
         return data;
+    }
+
+    @Override
+    public String toString() {
+        return "UDPMessage{" +
+                "operation=" + operation +
+                ", transactionId=" + transactionId +
+                ", sender='" + sender + '\'' +
+                ", data='" + data + '\'' +
+                '}';
     }
 }

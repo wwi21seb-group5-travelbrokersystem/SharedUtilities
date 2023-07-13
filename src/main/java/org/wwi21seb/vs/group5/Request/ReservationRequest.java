@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.UUID;
 
-public class HotelReservationRequest {
-    @JsonProperty("room_id")
-    private UUID roomID;
+public class ReservationRequest {
+    @JsonProperty("resource_id")
+    private UUID resourceId;
     @JsonProperty("start_date")
     private String startDate;
     @JsonProperty("end_date")
@@ -14,19 +14,23 @@ public class HotelReservationRequest {
     @JsonProperty("number_of_persons")
     private int numberOfPersons;
 
-    public HotelReservationRequest(
-            @JsonProperty("room_id") UUID roomID,
+    public ReservationRequest(
+            @JsonProperty("resource_id") UUID resourceId,
             @JsonProperty("start_date") String startDate,
             @JsonProperty("end_date") String endDate,
             @JsonProperty("number_of_persons") int numberOfPersons) {
-        this.roomID = roomID;
+        this.resourceId = resourceId;
         this.startDate = startDate;
         this.endDate = endDate;
         this.numberOfPersons = numberOfPersons;
     }
 
-    public UUID getRoomID() {
-        return roomID;
+    public void setResourceId(UUID resourceId) {
+        this.resourceId = resourceId;
+    }
+
+    public UUID getResourceId() {
+        return resourceId;
     }
 
     public String getStartDate() {
