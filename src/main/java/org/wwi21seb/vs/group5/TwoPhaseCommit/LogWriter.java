@@ -1,5 +1,7 @@
 package org.wwi21seb.vs.group5.TwoPhaseCommit;
 
+import org.wwi21seb.vs.group5.Logger.LoggerFactory;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +12,7 @@ import java.util.logging.Logger;
 public class LogWriter<T extends Serializable> {
     @Serial
     private static final long serialVersionUID = 1L;
-    private static final Logger LOGGER = Logger.getLogger(LogWriter.class.getName());
+    private static final Logger LOGGER = LoggerFactory.setupLogger(LogWriter.class.getName());
     private final String directory;
 
     public LogWriter() {

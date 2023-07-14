@@ -13,7 +13,7 @@ public class Participant implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    // Name of the participant (e.g. Hotel Provider)
+    // Name of the participant (e.g. HotelProvider)
     private String name;
     // URL of the participant: In our case the loopback address
     private InetAddress url;
@@ -25,6 +25,11 @@ public class Participant implements Serializable {
     // The vote of the participant, this is used to determine if the
     // participant is ready to commit or abort
     private Vote vote;
+    // The done flag of the participant, this is used to determine if the
+    // participant is finished with the commit or abort phase
+    // If all participants are done the coordinator can finish the transaction
+    // and delete the transaction context + the log
+    private boolean done = false;
     // The future of the prepare phase, this is used to determine if the
     // participant is ready to commit or abort or if the participant is
     // not reachable. In this case this would timeout and the coordinator
@@ -82,6 +87,14 @@ public class Participant implements Serializable {
 
     public void setPrepareFuture(CompletableFuture<Boolean> prepareFuture) {
         this.prepareFuture = prepareFuture;
+    }
+
+    public boolean isDone() {
+        return done;
+    }
+
+    public void setDone() {
+        this.done = true;
     }
 
     @Override
