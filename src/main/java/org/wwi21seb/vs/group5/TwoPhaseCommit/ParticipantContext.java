@@ -66,4 +66,15 @@ public class ParticipantContext implements Serializable {
             }
         }
     }
+
+    @Override
+    public String toString() {
+        return "ParticipantContext{" +
+                "transactionId=" + transactionId +
+                ", transactionState=" + transactionState +
+                ", coordinator=" + coordinator +
+                ", participants=" + participants +
+                ", commitFuture=" + commitFuture +
+                '}';
+    }
 }

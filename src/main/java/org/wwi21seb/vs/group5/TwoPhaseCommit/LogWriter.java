@@ -27,8 +27,8 @@ public class LogWriter<T extends Serializable> {
         writeObjectToLog(id, object);
     }
 
-    public void deleteLog(String id) {
-        File file = new File(directory + "/" + id + ".txt");
+    public void deleteLog(UUID id) {
+        File file = new File(directory + "/" + id.toString() + ".txt");
 
         if (file.delete()) {
             // Delete file and log success

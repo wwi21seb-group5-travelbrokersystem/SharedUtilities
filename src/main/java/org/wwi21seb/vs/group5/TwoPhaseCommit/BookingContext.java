@@ -49,4 +49,14 @@ public class BookingContext implements Serializable {
         this.bookingId = bookingId;
     }
 
+    @Override
+    public String toString() {
+        return "BookingContext{" +
+                "resourceId=" + resourceId +
+                ", bookingId=" + bookingId +
+                ", startDate='" + startDate + '\'' +
+                ", endDate='" + endDate + '\'' +
+                ", numberOfPersons=" + numberOfPersons +
+                '}';
+    }
 }

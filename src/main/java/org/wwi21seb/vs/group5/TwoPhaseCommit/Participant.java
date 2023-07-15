@@ -99,7 +99,14 @@ public class Participant implements Serializable {
 
     @Override
     public String toString() {
-        return "Participant{" + "name=" + name + ", url=" + url + ", port=" + port + ", vote=" + vote + '}';
+        return "Participant{" +
+                "name='" + name + '\'' +
+                ", url=" + url +
+                ", port=" + port +
+                ", bookingContext=" + bookingContext +
+                ", vote=" + vote +
+                ", done=" + done +
+                ", prepareFuture=" + prepareFuture +
+                '}';
     }
-
 }
