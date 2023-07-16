@@ -43,7 +43,8 @@ public class Participant implements Serializable {
     @JsonIgnore
     private transient CompletableFuture<Boolean> commitFuture;
 
-    public Participant(){}
+    public Participant() {
+    }
 
     public Participant(String name, InetAddress url, int port) {
         this.name = name;
@@ -76,14 +77,14 @@ public class Participant implements Serializable {
         return bookingContext;
     }
 
+    public void setBookingContext(BookingContext bookingContext) {
+        this.bookingContext = bookingContext;
+    }
+
     public void setBookingId(UUID bookingId) {
         BookingContext newBookingContext = bookingContext;
         newBookingContext.setBookingId(bookingId);
         this.bookingContext = newBookingContext;
-    }
-
-    public void setBookingContext(BookingContext bookingContext) {
-        this.bookingContext = bookingContext;
     }
 
     @JsonIgnore
@@ -100,8 +101,8 @@ public class Participant implements Serializable {
         return commitFuture;
     }
 
-    public void setCommitFuture(CompletableFuture<Boolean> commitFuture) {
-        this.commitFuture = commitFuture;
+    public void resetCommitFuture() {
+        this.commitFuture = new CompletableFuture<>();
     }
 
     public boolean isDone() {
