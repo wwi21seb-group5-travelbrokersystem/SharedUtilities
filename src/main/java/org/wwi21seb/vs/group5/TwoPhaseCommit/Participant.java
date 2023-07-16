@@ -36,6 +36,12 @@ public class Participant implements Serializable {
     // would abort the transaction
     @JsonIgnore
     private transient CompletableFuture<Boolean> prepareFuture;
+    // The future of the commit phase, this is used to determine if the
+    // participant is finished with the commit or abort phase. If the
+    // participant doesn't respond in time the coordinator would resend
+    // the commit or abort message
+    @JsonIgnore
+    private transient CompletableFuture<Boolean> commitFuture;
 
     public Participant(){}
 
@@ -87,6 +93,15 @@ public class Participant implements Serializable {
 
     public void setPrepareFuture(CompletableFuture<Boolean> prepareFuture) {
         this.prepareFuture = prepareFuture;
+    }
+
+    @JsonIgnore
+    public CompletableFuture<Boolean> getCommitFuture() {
+        return commitFuture;
+    }
+
+    public void setCommitFuture(CompletableFuture<Boolean> commitFuture) {
+        this.commitFuture = commitFuture;
     }
 
     public boolean isDone() {
